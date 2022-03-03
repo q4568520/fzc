@@ -9,9 +9,11 @@ if [ `hostname` == 'salt-minion' ]
 then
   apt-get install salt-minion -y
   sed -i 's/\#master:\ salt/master:\ 192.168.56.20/g' /etc/salt/minion
+  sed -i 's/PasswordAuthentication\ no/\#PasswordAuthentication\ no/g' /etc/ssh/sshd_config
   systemctl restart salt-minion
 else
   apt-get install salt-master salt-minion -y
   sed -i 's/\#master:\ salt/master:\ 192.168.56.20/g' /etc/salt/minion
+  sed -i 's/PasswordAuthentication\ no/\#PasswordAuthentication\ no/g' /etc/ssh/sshd_config
   systemctl restart salt-minion
 fi

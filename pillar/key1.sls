@@ -1,0 +1,3 @@
+testpillar:
+  - master
+  - mysql
